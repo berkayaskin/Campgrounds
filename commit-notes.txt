@@ -1,0 +1,35 @@
+COMMIT NOTES DAILY
+
+FIRST DAY - FIRST COMMIT
+Date: 25 July 2018
+CHAPTER 26 - BASICS
+
+Initial Routes
+
+1. Started with “npm init” to create package.json. 
+2. “npm install express ejs —save”
+3. app.js declerations & configurations such as require, routes, app.set("view engine", "ejs"); 
+4. Add landing page
+5. Add campgrounds page that lists all campgrounds. Each Campground has name and image
+
+Layout and Basic Styling
+
+1. Create header and footer partials
+2. Add in Bootstrap
+
+Creating Campgrounds
+
+1. Setup new campground POST route
+2. Add in body-parser
+3. Setup route to show form
+4. Add basic unstyled form
+
+Style the Campgrounds Page
+
+1. Add a better header/title (jumbotron)
+2. Make campgrounds display in a grid
+
+Style the Navbar and Form
+
+1. Add a navbar to all templates
+2. Style the new campground form
