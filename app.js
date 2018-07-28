@@ -1,28 +1,53 @@
-var express = require("express");
-var app = express();
-var bodyParser = require("body-parser");
+var express     = require("express"),
+    app         = express(),
+    bodyParser  = require("body-parser"),
+    mongoose    = require("mongoose")
+
+mongoose.connect('mongodb://localhost:27017/campgrounds', { useNewUrlParser: true }); 
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 
-var campgrounds = [
-        {name: "Salmon Creek", image: "https://www.photosforclass.com/download/pixabay-2825197?webUrl=https%3A%2F%2Fpixabay.com%2Fget%2Feb3db30a29fd063ed1584d05fb1d4e97e07ee3d21cac104496f2c57ca7eeb3b0_960.jpg&user=Tommy_Rau"},
-        {name: "Granite Hill", image: "https://www.photosforclass.com/download/pixabay-3406137?webUrl=https%3A%2F%2Fpixabay.com%2Fget%2Fea31b10929f7063ed1584d05fb1d4e97e07ee3d21cac104496f2c57ca7eeb3b0_960.jpg&user=lukasbieri"},
-        {name: "Mountain Goat's Rest", image: "https://www.photosforclass.com/download/pixabay-1892494?webUrl=https%3A%2F%2Fpixabay.com%2Fget%2Fe83db80d2cfd053ed1584d05fb1d4e97e07ee3d21cac104496f2c57ca7eeb3b0_960.jpg&user=12019"},
-        {name: "Salmon Creek", image: "https://www.photosforclass.com/download/pixabay-2825197?webUrl=https%3A%2F%2Fpixabay.com%2Fget%2Feb3db30a29fd063ed1584d05fb1d4e97e07ee3d21cac104496f2c57ca7eeb3b0_960.jpg&user=Tommy_Rau"},
-        {name: "Granite Hill", image: "https://www.photosforclass.com/download/pixabay-3406137?webUrl=https%3A%2F%2Fpixabay.com%2Fget%2Fea31b10929f7063ed1584d05fb1d4e97e07ee3d21cac104496f2c57ca7eeb3b0_960.jpg&user=lukasbieri"},
-        {name: "Mountain Goat's Rest", image: "https://www.photosforclass.com/download/pixabay-1892494?webUrl=https%3A%2F%2Fpixabay.com%2Fget%2Fe83db80d2cfd053ed1584d05fb1d4e97e07ee3d21cac104496f2c57ca7eeb3b0_960.jpg&user=12019"}
-    ]
+// SCHEMA SETUP
+var campgroundSchema = new mongoose.Schema({
+   name: String,
+   image: String,
+   description: String
+});
+
+var Campground = mongoose.model("Campground", campgroundSchema);
+
+// Campground.create(
+//     {
+//         name: "Granite Hill",
+//         image:"https://images.unsplash.com/photo-1526666818265-c8f81cee598b?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=081f7fe3903680ed9d921e6ab9d2fbe1&auto=format&fit=crop&w=1650&q=80",
+//         description:"This is a hug Granite Hill, no bath, no water!"
+//     },
+//     function(err, campground) {
+//         if(err){
+//             console.log(err);
+//         } else {
+//             console.log("NEWLY CREATED CAMPGROUND: ");
+//             console.log(campground);
+//         }
+//     });
 
 app.get("/", function(req, res){
    res.render("landing");
 });
 
 app.get("/campgrounds", function(req, res){
-    
-   res.render("campgrounds", {campgrounds:campgrounds});
+    //Get all campgrounds from DB
+    Campground.find({}, function(err, allCampgrounds){
+        if(err){
+            console.log(err);
+        } else {
+            res.render("index", {campgrounds:allCampgrounds});
+        }
+    });
 });
 
+//NEW- show form to create new campground
 app.get("/campgrounds/new", function(req, res) {
    res.render("new.ejs") 
 });
@@ -31,11 +56,29 @@ app.post("/campgrounds", function(req, res){
     //get data from form and add to campgrounds array
     var name = req.body.name;
     var image = req.body.image;
-    var newCampground = {name: name , image: image}
-    campgrounds.push(newCampground);
-    
-    //redirect back to campground page
-    res.redirect("/campgrounds");
+    var desc = req.body.description;
+    var newCampground = {name: name , image: image, description: desc};
+    // Create a new campground and save to DB
+    Campground.create(newCampground, function(err, newlyCreated){
+        if(err){
+            console.log(err);
+        } else {
+            res.redirect("/campgrounds");
+        }
+    });
+});
+
+// SHOW - shows more info about one campground
+app.get("/campgrounds/:id", function(req, res) {
+    //find the campground with provided ID
+    Campground.findById(req.params.id, function(err, foundCampground){
+       if(err) {
+           console.log(err);
+       } else {
+           //render show template with that campground
+            res.render("show", {campground: foundCampground});
+       }
+    });
 });
 
 app.listen(process.env.PORT, process.env.IP, function(){

@@ -4,6 +4,6 @@ Full Stack "Campground" Project
 
 Planned Technologies(will be updated):
 
-HTML5, CSS3, Bootstrap, Javascript, Node.js, Express.js, Mongoose DB, Google Maps API
+HTML5, CSS3, Bootstrap, Javascript, Node.js, Express.js, MongoDB, Google Maps API
 
 

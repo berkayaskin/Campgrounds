@@ -33,3 +33,21 @@ Style the Navbar and Form
 
 1. Add a navbar to all templates
 2. Style the new campground form
+
+SECOND COMMIT
+Date: 27 July 2018
+CHAPTER 28: DATA PERSISTANCE
+
+Adding Mongoose
+
+1. Install and configure mongoose
+2. Setup campground model
+3. Use campground model inside of our routes
+
+Date: 28 July 2018
+Show Page
+
+1. Review the RESTful routes I’ve seen so far
+2. Add description to our campground model
+3. Show db.collection.drop()
+4. Add a show route/template
