@@ -1,4 +1,4 @@
-COMMIT NOTES DAILY
+ DAILY COMMIT NOTES
 
 FIRST DAY - FIRST COMMIT
 Date: 25 July 2018
@@ -107,3 +107,19 @@ SECTION 33: ADDING AUTHENTICATION
 
 * AUTH PT.5 - SHOW/HIDE LINKS
 1. Show/hide auth links in navbar correctly
+
+FIFTH COMMIT
+SECTION 34: CLEANING UP
+
+* REFACTOR THE ROUTES
+1. Use Express router to reorganize all routes
+
+* Users + Comments
+1. Associate users and comments
+2. Save author's name to a comment automatically
+
+* Users + Campgrounds
+1. Prevent an unauthenticated user from creating a campground
+2. Save username + id to newly created campground
+
+
