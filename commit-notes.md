@@ -163,3 +163,12 @@ Comment Destroy Route:      /campgrounds/:id/comments/:comment_id
 3. Hide/Show edit and delete buttons
 4. Refactor Middleware
 
+SEVENTH COMMIT 
+SECTION 36: UI IMPROVEMENTS
+
+* Adding in Flash!
+1. Demo working version
+2. Install and configure connect-flash
+3. Add bootstrap alerts to header
+
+
