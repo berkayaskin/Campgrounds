@@ -1,5 +1,6 @@
 var express             = require("express"),
     User                = require("../models/user"),
+    campground          = require("../models/campground"),
     passport            = require("passport"),
     router              = express.Router();
 
@@ -13,7 +14,7 @@ router.get("/register", function(req, res){
    res.render("register") ;
 });
 
-//hande sign up logic
+//handle sign up logic
 router.post("/register", function(req, res) {
     var newUser = new User({username: req.body.username});
     User.register(newUser, req.body.password, function(err, user){

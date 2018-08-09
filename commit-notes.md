@@ -114,12 +114,52 @@ SECTION 34: CLEANING UP
 * REFACTOR THE ROUTES
 1. Use Express router to reorganize all routes
 
-* Users + Comments
+* USERS + COMMENTS
 1. Associate users and comments
 2. Save author's name to a comment automatically
 
-* Users + Campgrounds
+* USERS + CAMPGROUNDS
 1. Prevent an unauthenticated user from creating a campground
 2. Save username + id to newly created campground
+ 
+SIXTH COMMIT
+Date: 09 August 2018
+SECTION 35 - UPDATE AND DESTROY
 
+* EDITING CAMPGROUNDS
+1. Add Method-Override
+2. Add Edit Route for Campgrounds
+3. Add Link to Edit Page
+4. Add Update Route
+5. Fix $set problem
+
+* DELETING CAMPGROUNDS
+1. Add Destroy Route
+2. Add Delete button
+
+* AUTHORIZATION(PERMISSION) PT. 1: CAMPGROUNDS
+1. User can only edit his/her campgrounds
+2. User can only delete his/her campgrounds
+3. Hide/Show edit and delete buttons
+
+* EDITING COMMENTS
+1. Add Edit route for comments
+2. Add Edit button
+3. Add Update route
+ 
+/campgrounds/:id/edit
+/campgrounds/:id/comments/:comment_id/edit
+
+* DELETING COMMENTS
+1. Add Destroy route
+2. Add Delete button
+
+Campground Destroy Route:   /campgrounds/:id
+Comment Destroy Route:      /campgrounds/:id/comments/:comment_id
+
+* AUTHORIZATION(PERMISSION) PT. 2: COMMENTS
+1. User can only edit his/her comments
+2. User can only delete his/her comments
+3. Hide/Show edit and delete buttons
+4. Refactor Middleware
 
