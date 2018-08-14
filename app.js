@@ -17,7 +17,7 @@ var commentRoutes       = require("./routes/comments"),
     
 
 //mongoose.connect('mongodb://localhost:27017/campgrounds', { useNewUrlParser: true });
-mongoose.connect('mongodb://berkayaskin:96Xc6z9f4@@ds011664.mlab.com:11664/campgrounds');
+mongoose.connect('mongodb://berkayaskin:96Xc6z9f4@@ds011664.mlab.com:11664/campgrounds', { useNewUrlParser: true });
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
