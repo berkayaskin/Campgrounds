@@ -4,11 +4,13 @@ var express             = require("express"),
     mongoose            = require("mongoose"),
     flash               = require("connect-flash"),
     passport            = require("passport"),
+    cookieParser        = require("cookie-parser"),
     LocalStrategy       = require("passport-local"),
     methodOverride      = require("method-override"),
     Campground          = require("./models/campground"),
     Comment             = require("./models/comment"),
     User                = require("./models/user"),
+    session             = require("express-session"),
     seedDB              = require("./seeds")
         
 var commentRoutes       = require("./routes/comments"),
@@ -17,12 +19,12 @@ var commentRoutes       = require("./routes/comments"),
     
 
 //mongoose.connect('mongodb://localhost:27017/campgrounds', { useNewUrlParser: true });
-mongoose.connect('mongodb://berkayaskin:96Xc6z9f4@@ds011664.mlab.com:11664/campgrounds', { useNewUrlParser: true });
+mongoose.connect("mongodb://berkayaskin:96xc6z9f4@ds011664.mlab.com:11664/campgrounds", { useNewUrlParser: true });
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
 app.use(methodOverride("_method"));
-app.use(flash());
+app.use(cookieParser('secret'));
 //seedDB();
 
 //PASSPORT CONFIGURATION
@@ -31,6 +33,8 @@ app.use(require("express-session")({
     resave: false,
     saveUninitialized: false
 }));
+
+app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 passport.use(new LocalStrategy(User.authenticate()));
