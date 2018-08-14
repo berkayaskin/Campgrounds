@@ -170,5 +170,32 @@ SECTION 36: UI IMPROVEMENTS
 1. Demo working version
 2. Install and configure connect-flash
 3. Add bootstrap alerts to header
+4. Flash Messages and landing page refactor
+================ END OF THE PROJECT ================ 
+TODO LIST
+
+* CSS3 Background animation on landing page √
+* Authentication flash messages √ 
+* Dynamic price feature √ 
+* Fuzzy Search
+* Campground location with Google Maps
+* Campground cost
+* Display time since post was created with Moment JS 
+* User profile 
+* Password reset 
+* Image upload with multer and cloudinary 
+* Migration/upgrade instructions for Bootstrap 4
+* Refactor callbacks with Async/Await
+ 
+
+EIGHTH COMMIT
+Date: 14.08.2018
+IMPROVEMENTS
+
+1. Dynamic price feature
+2. 
+
+
+
 
 
