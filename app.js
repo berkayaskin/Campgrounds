@@ -4,7 +4,6 @@ var express             = require("express"),
     mongoose            = require("mongoose"),
     flash               = require("connect-flash"),
     passport            = require("passport"),
-    cookieParser        = require("cookie-parser"),
     LocalStrategy       = require("passport-local"),
     methodOverride      = require("method-override"),
     Campground          = require("./models/campground"),
@@ -24,7 +23,6 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
 app.use(methodOverride("_method"));
-app.use(cookieParser('secret'));
 //seedDB();
 
 //PASSPORT CONFIGURATION
