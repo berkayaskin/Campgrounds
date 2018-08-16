@@ -16,9 +16,10 @@ var commentRoutes       = require("./routes/comments"),
     campgroundRoutes    = require("./routes/campgrounds"),
     indexRoutes         = require("./routes/index")
     
+mongoose.connect(process.env.DATABASEURL, {useNewUrlParser: true});
+//mongoose.connect("mongodb://<username>:<password>@ds011664.mlab.com:11664/campgrounds", { useNewUrlParser: true });
 
-//mongoose.connect('mongodb://localhost:27017/campgrounds', { useNewUrlParser: true });
-mongoose.connect("mongodb://berkayaskin:96xc6z9f4@ds011664.mlab.com:11664/campgrounds", { useNewUrlParser: true });
+
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
