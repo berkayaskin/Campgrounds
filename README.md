@@ -1,6 +1,6 @@
-# Full Stack "Campground" Project
+# Full Stack Campgrounds Project
 
-- This project is made for foreigners to show the best campgrounds from Turkey and all around the world.
+- Campgrounds is an application for a fictional start up that allows you to add campgrounds for other users to comment and rate, as view campgrounds added by other users.
 
 - Planned Technologies(will be updated):
 
